@@ -5,7 +5,10 @@ description = "Default template for PDM package"
 authors = [
     {name = "lsiwh37249", email = "lsiwh37249@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.32.3",
+    "tqdm>=4.66.5",
+]
 requires-python = "==3.11.*"
 readme = "README.md"
 license = {text = "MIT"}
@@ -13,3 +16,15 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+    "pytest-cov>=5.0.0",
+]
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[project.scripts]
+mvdata-ping = 'mvdata.app:ping'
+save_data = 'mvdata.ml:save_movies'
