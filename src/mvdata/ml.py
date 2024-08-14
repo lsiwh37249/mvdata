@@ -18,6 +18,14 @@ def req(url):
     j = r.json()
     return j
 
+def get_movieCd(file_path, data=' '): 
+    movieCds = [ ]
+    with open(file_path, "w", encoding='utf-8') as f:
+        #json_data = json.load(f)    
+        json.dump(data, f, indent=4, ensure_ascii=False)
+
+    return movieCds
+
 def save_movies(year=2015, per_page=10, sleep_time=1):
     file_path = f'/home/kim1/data/movies/year={year}/data.json'
     
@@ -32,6 +40,8 @@ def save_movies(year=2015, per_page=10, sleep_time=1):
     tot_cnt = r['movieListResult']['totCnt']
     total_pages = (tot_cnt // per_page) + 1
 
+    
+
     # total_pages 만큼 Loop 돌면서 API 호출
     all_data = []
     for page in tqdm(range(1, total_pages + 1)):
@@ -40,6 +50,25 @@ def save_movies(year=2015, per_page=10, sleep_time=1):
         url_addPage = url_base + f"&curPage={page}"
         r = req(url_addPage)
         d = r['movieListResult']['movieList']
+        all_data.extend(d)
+
+    save_json(all_data, file_path)
+    return True
+
+def save_moviedetails(year, per_page=10, sleep_time=1):
+    file_path = f'/home/kim1/data/movies/year={year}/data.json'
+
+    url_base = f"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json&key={API_KEY}"
+    
+    json_data = get_movieCd(file_path)
+
+    all_data = json_data
+    for page in tqdm(range(1, total_pages + 1)):
+        time.sleep(sleep_time)
+
+        url_addPage = url_base + f"&movieCd={movie_Cd}"
+        r = req(url_addPage)
+        d = r['movieListResult']['movieInfo']
         all_data.extend(d)
 
     save_json(all_data, file_path)
