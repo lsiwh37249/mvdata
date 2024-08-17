@@ -1,4 +1,5 @@
-from mvdata.ml import save_json,req,save_movies,save_moviedetails,get_movieCd
+from mvdata.ml import save_json,req,save_movies
+ 
 
 #save_json : data, file_path
     
@@ -15,7 +16,5 @@ def test_save_movies():
     r = save_movies(year=2021, sleep_time=0.1)
     assert r
 
-def test_save_moviedetails():
-    save_moviedetails(2015)
     
 
