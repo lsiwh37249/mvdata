@@ -1,4 +1,4 @@
-from mvdata.mj_file import data2json
+from mvstar.mj_file import data2json
 import json 
 
 #save_json : data, file_path

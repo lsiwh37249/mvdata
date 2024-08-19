@@ -1,5 +1,5 @@
 [project]
-name = "mvStar"
+name = "mvstar"
 version = "0.2.3"
 description = "Default template for PDM package"
 authors = [
