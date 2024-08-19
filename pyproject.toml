@@ -27,4 +27,5 @@ pythonpath = "src"
 
 [project.scripts]
 mvdata-ping = 'mvdata.app:ping'
-save_data = 'mvdata.ml:save_movies'
+#save_data = 'mvdata.ml:save_movies'
+save_data = 'mvdata.mj_file:data2parq'
