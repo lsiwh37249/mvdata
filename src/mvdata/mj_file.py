@@ -18,9 +18,7 @@ def get_movieCd(file_path, data=' '):
     movieCds =[ ]
     with open(file_path,"w", encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-    return movieCds
-
-    
+    return movieCds 
 
 #json 값 저장하기
 # 이미 저장된 파일의 경로를 불러온 뒤에 json.dump를 이용한다.
